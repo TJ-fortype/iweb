@@ -119,6 +119,7 @@
 			text-align: center;
 			color: #fff;
 			border: 1px solid #ccc;
+			background: #77c558;
 		}
 		.nav_user > .user_login > a {
 			color: #fff;
@@ -126,7 +127,15 @@
 		.nav_user > .user_login > a:hover {
 			color: #FFFF00;
 		}
-		
+		.sanjiao {
+			transition: all .3s;
+		}
+		.sanjiao:hover {
+			transform-origin: center;
+			transform: rotate(180deg);
+			
+		}
+
 	</style>
 </head>
 <body>
@@ -151,9 +160,9 @@
 			<!-- 我的购物车 -->
 			<div class="search">
 				<div class="shoppingc">
-					<span class="fa fa-shopping-cart fa-2x"></span>
-					<span>我的购物车</span>
-					<span class="fa fa-caret-down"></span>
+					<span class="fa fa-shopping-cart fa-lg"></span>
+					<span>我的购物车(0)</span>
+					<span class="fa fa-caret-down sanjiao"></span>
 				</div>
 			</div>
 			<!-- 输入框 -->
