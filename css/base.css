@@ -1,0 +1,21 @@
+/* 此文件中包含所有的页面都公用的全局css */
+* {	/*选择所有的元素*/
+	box-sizing: border-box;/*边框盒子,简化盒子尺寸计算*/
+}
+body {
+	margin: 0;
+	color: #555;
+	background: #fff;	/*默认颜色是透明色，如果不改会随windos*/
+	font-size: 12px;	/*默认14px*/
+	line-height: 1.667;	/*默认的行高*/
+	font-family: "arial, helvetica, sans-serif";
+}
+
+a {
+	color: #555;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #f60;
+}
