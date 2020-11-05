@@ -23,20 +23,24 @@
 			margin-right: auto;
 			border: 1px solid #aaa;
 		}
+		
 		/* 复杂选择器:>选择孩子 */
 		.topbar>.container>a,
 		.topbar>.container>span {
 			padding-left: 1em;
 		}
+		
 		/* 主题色反色 */
 		.theme-reverse{
 			color: #f60;
 		}
+		
 		/* 主题色 */
 		.theme{	
 			
 		}
-		/* logo和搜索栏 */
+		
+		/*----------------------------- logo和搜索栏 --------------------------------*/
 		.searchbar{
 			widows: 100%;
 			background: #fff;
@@ -49,6 +53,7 @@
 			float: right;
 			margin-top: 6px;
 		}
+		
 		/*输入框和放大镜*/
 		.search > input{
 			width: 430px;
@@ -71,17 +76,12 @@
 			text-align: center;
 			vertical-align: middle;
 		}
-		/*购物车重构*/
-		.search > .shoppingc > .fa-shopping-cart {
-			padding-left: 0.6em;
-			padding-right: 0.6em;
-			color: #57BC4C;
-		}
-		.search > .shoppingc > .fa-caret-down {
-			color: #57BC4C;
-			padding-left: 0.6em;
-			padding-right: 0.6em;
-		}
+		
+		/*-----------------------------------购物车重构-------------------------------*/
+		.cart-container {
+			/* 修改购物车的定位方式，为下拉菜单提供定位参照物,但不脱离文档流 */
+			position: relative;
+		}		
 		.shoppingc{
 			width: 140px;
 			height: 32px;
@@ -90,7 +90,41 @@
 			line-height: 32px;
 			text-align: center;
 			margin-left: 20px;
+			/* 修改光标的样式 */
+			cursor: pointer;
+			position: relative;	/*只有定位了的元素才能使用z-index*/
+			/* border-bottom-color: #fff; */
+			border-bottom: none;
+			z-index: 1;
+	
 		}
+		.search > .shoppingc > .fa-shopping-cart {
+			padding-left: 0.6em;
+			padding-right: 0.6em;
+			color: #57BC4C;
+		}
+		.shoppingc > .caret { /*动画基础类*/
+			color: #57BC4C;
+			padding-left: 0.6em;
+			padding-right: 0.6em;
+			transform: rotate(0);
+			transition: all .3s;
+		}
+		.shoppingc > .caret-rotate {	/*动画目标类*/
+			transform: rotate(180deg);
+		}
+		.cart-container > .dropdown {
+			position: absolute;	/*绝对定位的元素可以处于其他元素的上方*/
+			top: 31px;
+			right: 0;
+			border: 1px solid #ddd;
+			padding: 2em 3em;
+			width: 262px;
+			background: #fff;
+		}
+		
+		
+		/* ------------------------------------导航栏--------------------------------- */
 		.navbar {
 		    height: 40px;
 		    background: #57bc4c;
@@ -116,7 +150,6 @@
 		}
 		.nav_user {
 		    float: right;
-		    position: relative;
 		}
 		.nav_user > .user_login{
 			width: 140px;
@@ -133,14 +166,6 @@
 		}
 		.nav_user > .user_login > a:hover {
 			color: #FFFF00;
-		}
-		.sanjiao {
-			transition: all .3s;
-		}
-		.sanjiao:hover {
-			transform-origin: center;
-			transform: rotate(180deg);
-			
 		}
 
 	</style>
@@ -166,10 +191,17 @@
 			<img src="img/logo.png" alt="iWeb_LOGO">
 			<!-- 我的购物车 -->
 			<div class="search">
-				<div class="shoppingc">
-					<span class="fa fa-shopping-cart fa-lg"></span>
-					<span>我的购物车(<b>0</b>)</span>
-					<span class="fa fa-caret-down sanjiao"></span>
+				<div class="cart-container">
+					<!-- 购物车：z-index要高于下拉菜单 -->
+					<div class="shoppingc" id="myCart">
+						<span class="fa fa-shopping-cart fa-lg"></span>
+						<span>我的购物车(<b>0</b>)</span>
+						<span class="fa fa-caret-down caret" id="caret"></span>
+					</div>
+					<!-- 下拉菜单 -->
+					<div class="dropdown">
+						请登陆后查看您的购物车
+					</div>
 				</div>
 			</div>
 			<!-- 输入框 -->
@@ -212,5 +244,17 @@
 			</div>
 		</div>
 	</div>
+
+
+	<script>
+		// 鼠标悬停“我的购物车”则小三角开始旋转；离开则转回来
+		myCart.onmouseenter = ()=>{
+			caret.classList.add('caret-rotate')
+		}
+		myCart.onmouseleave = ()=>{
+			caret.classList.remove('caret-rotate')
+		}
+	</script>
+
 </body>
 </html>
