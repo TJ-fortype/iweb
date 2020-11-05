@@ -9,6 +9,7 @@
 	<link rel="icon"  href="img/favicon.ico"/>
 	<title>iweb在线课堂</title>
 	<style>
+		/* -----------------------------------顶部栏--------------------------------- */
 		.topbar{
 			width:100%;
 			height: 29px;
@@ -94,11 +95,11 @@
 			cursor: pointer;
 			position: relative;	/*只有定位了的元素才能使用z-index*/
 			/* border-bottom-color: #fff; */
-			border-bottom: none;
+			
 			z-index: 1;
 	
 		}
-		.search > .shoppingc > .fa-shopping-cart {
+		.fa-shopping-cart {
 			padding-left: 0.6em;
 			padding-right: 0.6em;
 			color: #57BC4C;
@@ -113,6 +114,10 @@
 		.shoppingc > .caret-rotate {	/*动画目标类*/
 			transform: rotate(180deg);
 		}
+		.shoppingc2 {	/*目标颜色改变*/
+			background: #fff;
+			border-bottom: none;
+		}
 		.cart-container > .dropdown {
 			position: absolute;	/*绝对定位的元素可以处于其他元素的上方*/
 			top: 31px;
@@ -121,6 +126,7 @@
 			padding: 2em 3em;
 			width: 262px;
 			background: #fff;
+			display: none;
 		}
 		
 		
@@ -167,6 +173,18 @@
 		.nav_user > .user_login > a:hover {
 			color: #FFFF00;
 		}
+		/* ------------------------------------图片轮播栏--------------------------------- */
+		.picbar{
+			width: 100%;
+			height: 382px;
+			display: none;
+			z-index: 10;
+			transition: all .3s; 
+		}
+		.picbar > .picbar1{
+			display: block;
+			z-index: 20;
+		}
 
 	</style>
 </head>
@@ -180,7 +198,7 @@
 			<a href="#">
 				<span class="fa fa-mobile-phone fa-lg"></span><span class="theme-reverse">下载手机客户端</span>
 			</a>
-			<span class="fa fa-envelope"></span>反馈邮箱TJ@1 63.com
+			<span class="fa fa-envelope"></span>反馈邮箱TJ@163.com
 			<span class="fa fa-phone"></span>客服热线：4008-200-200
 		</div>
 	</div>
@@ -199,7 +217,7 @@
 						<span class="fa fa-caret-down caret" id="caret"></span>
 					</div>
 					<!-- 下拉菜单 -->
-					<div class="dropdown">
+					<div class="dropdown" id="dropdown">
 						请登陆后查看您的购物车
 					</div>
 				</div>
@@ -244,16 +262,37 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- 照片轮播 -->
+	<!-- 图片列表 -->
+	<div class="picbar">
+		<img class="picb" src="img/banner01.jpg" >
+		<img class="picb" src="img/banner02.jpg" >
+		<img class="picb" src="img/banner03.jpg" >
+		<img class="picb" src="img/banner04.jpg" >
+	</div>
+	
+	
 
 	<script>
 		// 鼠标悬停“我的购物车”则小三角开始旋转；离开则转回来
+		// 鼠标悬停出现下拉菜单，离开隐藏
 		myCart.onmouseenter = ()=>{
+			dropdown.style.display = "block";
 			caret.classList.add('caret-rotate')
+			myCart.classList.add('shoppingc2')
 		}
 		myCart.onmouseleave = ()=>{
+			dropdown.style.display = "none"
 			caret.classList.remove('caret-rotate')
+			myCart.classList.remove('shoppingc2')
 		}
+		let picblist = document.querySelectorAll('.picb')
+		// console.log(picblist)
+		for(let i =0;i<picblist.length;i++){
+			let pic = picblist[i]
+			pic.classList.add('picbar1')
+		}
+		
 	</script>
 
 </body>
