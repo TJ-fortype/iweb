@@ -49,6 +49,7 @@
 			float: right;
 			margin-top: 6px;
 		}
+		/*输入框和放大镜*/
 		.search > input{
 			width: 430px;
 			height: 32px;
@@ -58,13 +59,7 @@
 			/* css中0.8打成.8 */
 			padding-left: .7em;
 			padding-right: .7em;
-		}
-		/*购物车重构*/
-		.search > .shoppingc > .fa-shopping-cart {
-			color: #57BC4C;
-		}
-		.search > .shoppingc > .fa-caret-down {
-			color: #57BC4C;
+			vertical-align: middle;
 		}
 		.search > .fa-search {
 			background: #57bc4c;
@@ -74,6 +69,18 @@
 			font-size: 2em;
 			line-height: 32px;
 			text-align: center;
+			vertical-align: middle;
+		}
+		/*购物车重构*/
+		.search > .shoppingc > .fa-shopping-cart {
+			padding-left: 0.6em;
+			padding-right: 0.6em;
+			color: #57BC4C;
+		}
+		.search > .shoppingc > .fa-caret-down {
+			color: #57BC4C;
+			padding-left: 0.6em;
+			padding-right: 0.6em;
 		}
 		.shoppingc{
 			width: 140px;
@@ -161,7 +168,7 @@
 			<div class="search">
 				<div class="shoppingc">
 					<span class="fa fa-shopping-cart fa-lg"></span>
-					<span>我的购物车(0)</span>
+					<span>我的购物车(<b>0</b>)</span>
 					<span class="fa fa-caret-down sanjiao"></span>
 				</div>
 			</div>
@@ -176,7 +183,7 @@
 		<div class="container">
 			<div class="nav">
 				<div class="linav">
-					<a href="index.html">首页</a>
+					<a href="#">首页</a>
 				</div>
 				<div class="linav">
 					<a href="index.html">全部课程</a>
