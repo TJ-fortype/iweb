@@ -148,7 +148,7 @@
 			float: left;
 			border: 1px solid #ccc;
 		}
-		.nav > .linav:hover{
+		.nav > .linav1{
 			background: #3da232;
 		}
 		.nav > .linav > a {
@@ -209,9 +209,9 @@
 			<img src="img/logo.png" alt="iWeb_LOGO">
 			<!-- 我的购物车 -->
 			<div class="search">
-				<div class="cart-container">
+				<div class="cart-container" id="myCart">
 					<!-- 购物车：z-index要高于下拉菜单 -->
-					<div class="shoppingc" id="myCart">
+					<div class="shoppingc" id="myCart1">
 						<span class="fa fa-shopping-cart fa-lg"></span>
 						<span>我的购物车(<b>0</b>)</span>
 						<span class="fa fa-caret-down caret" id="caret"></span>
@@ -279,18 +279,20 @@
 		myCart.onmouseenter = ()=>{
 			dropdown.style.display = "block";
 			caret.classList.add('caret-rotate')
-			myCart.classList.add('shoppingc2')
+			myCart1.classList.add('shoppingc2')
 		}
 		myCart.onmouseleave = ()=>{
 			dropdown.style.display = "none"
 			caret.classList.remove('caret-rotate')
-			myCart.classList.remove('shoppingc2')
+			myCart1.classList.remove('shoppingc2')
 		}
-		let picblist = document.querySelectorAll('.picb')
+		let linav = document.querySelectorAll('.linav')
 		// console.log(picblist)
-		for(let i =0;i<picblist.length;i++){
-			let pic = picblist[i]
-			pic.classList.add('picbar1')
+		for(let i=0; i<linav.length; i++){
+			let list1 = linav[i]
+			list1.onclick = ()=> {
+			list1.classList.add('linav1')
+			}
 		}
 		
 	</script>
