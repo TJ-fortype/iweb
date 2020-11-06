@@ -19,3 +19,18 @@ a {
 a:hover {
 	color: #f60;
 }
+
+ol,
+ul {
+	margin: 0;				/*清除浏览器为ol/ul自带的样式*/
+	padding: 0;
+}
+li {
+	list-style: none; 		/*清除列表项前的提示符号*/
+	/* 修改列表项前的提示符号 */
+	/* list-style: disc; 圆饼*/
+	/* list-style: decimal; 数字 */
+	/* list-style: lower-alpha; 小写字母*/
+	/* list-style: upper-alpha; 大写字母*/
+	/* list-style: none; */
+}

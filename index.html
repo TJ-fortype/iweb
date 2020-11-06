@@ -132,47 +132,28 @@
 		
 		/* ------------------------------------导航栏--------------------------------- */
 		.navbar {
-		    height: 40px;
+		    height: 42px;
 		    background: #57bc4c;
 		    border-bottom: 2px solid #c1eebd;
-		}
-		.nav {
-		    float: left;
-		}
-		.nav > .linav {
-			width: 78px;
-			height: 40px;
-			font-size: 15px;
 			line-height: 40px;
-			text-align: center;
-			float: left;
-			border: 1px solid #ccc;
+			color: #fff;
+			font-size: 1.2em;
 		}
-		.nav > .linav1{
-			background: #3da232;
+		.navbar .menu {
+		
 		}
-		.nav > .linav > a {
+		.navbar .menu li {
+			float: left;		/*让原本的块级元素li全部浮动起来*/
+			padding: 0 1.5em;
+		}
+		.navbar .menu li:hover {
+			background: #4aaf3f;
+		}
+		.navbar .menu li a {	/*复杂选择器有更高的优先级*/
 			color: #fff;
 		}
-		.nav_user {
-		    float: right;
-		}
-		.nav_user > .user_login{
-			width: 140px;
-			height: 40px;
-			font-size: 15px;
-			line-height: 40px;
-			text-align: center;
-			color: #fff;
-			border: 1px solid #ccc;
-			background: #77c558;
-		}
-		.nav_user > .user_login > a {
-			color: #fff;
-		}
-		.nav_user > .user_login > a:hover {
-			color: #FFFF00;
-		}
+		
+	
 		/* ------------------------------------图片轮播栏--------------------------------- */
 		.picbar{
 			width: 100%;
@@ -181,7 +162,7 @@
 			z-index: 10;
 			transition: all .3s; 
 		}
-		.picbar > .picbar1{
+		.picbar.picbar1{
 			display: block;
 			z-index: 20;
 		}
@@ -189,7 +170,7 @@
 	</style>
 </head>
 <body>
-	<!-- 顶部条 -->
+	<!-- 1楼：顶部条 -->
 	<div class="topbar">
 		<div class="container">
 			<a href="#">
@@ -202,7 +183,8 @@
 			<span class="fa fa-phone"></span>客服热线：4008-200-200
 		</div>
 	</div>
-	<!-- 搜索条 -->
+	
+	<!-- 2楼：搜索条 -->
 	<div class="searchbar">
 		<div class="container">
 			<!-- logo图片 -->
@@ -228,40 +210,24 @@
 			</div>
 		</div>
 	</div>
-	<!-- 导航条 -->
+	
+	<!-- 3楼：导航条 -->
 	<div class="navbar">
 		<div class="container">
-			<div class="nav">
-				<div class="linav">
-					<a href="#">首页</a>
-				</div>
-				<div class="linav">
-					<a href="index.html">全部课程</a>
-				</div>
-				<div class="linav">
-					<a href="index.html">基础课程</a>
-				</div>
-				<div class="linav">
-					<a href="index.html">核心课程</a>
-				</div>
-				<div class="linav">
-					<a href="index.html">进阶课程</a>
-				</div>
-				<div class="linav">
-					<a href="index.html">名师堂</a>
-				</div>
-				<div class="linav">
-					<a href="index.html">校区</a>
-				</div>
-			</div>
-			<div class="nav_user">
-				<div class="user_login">
-					<a href="#">登录</a> | <a href="#">注册</a>
-				</div>
-
-			</div>
+			<!-- 左侧的功能列表 -->
+			<ul class="menu">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="course.html">全部课程</a></li>
+				<li><a href="course.html?tid=1">基础课程</a></li>
+				<li><a href="course.html?tid=2">核心课程</a></li>
+				<li><a href="course.html?tid=3">进阶课程</a></li>
+				<li><a href="teacher.html">名师堂</a></li>
+				<li><a href="school.html">校区</a></li>
+			</ul>
+			<!-- 右侧的登陆注册 -->
 		</div>
 	</div>
+	
 	<!-- 照片轮播 -->
 	<!-- 图片列表 -->
 	<div class="picbar">
@@ -287,7 +253,7 @@
 			myCart1.classList.remove('shoppingc2')
 		}
 		let linav = document.querySelectorAll('.linav')
-		// console.log(picblist)
+		 console.log(linav)
 		for(let i=0; i<linav.length; i++){
 			let list1 = linav[i]
 			list1.onclick = ()=> {
