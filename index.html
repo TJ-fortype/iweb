@@ -152,21 +152,169 @@
 		.navbar .menu li a {	/*复杂选择器有更高的优先级*/
 			color: #fff;
 		}
-		
-	
-		/* ------------------------------------图片轮播栏--------------------------------- */
-		.picbar{
-			width: 100%;
-			height: 382px;
-			display: none;
-			z-index: 10;
-			transition: all .3s; 
+		.navbar .menu li.current {
+			background: #3da232;
 		}
-		.picbar.picbar1{
-			display: block;
+		.nav_user {
+		    float: right;
+		}
+		.nav_user > .user_login{
+			width: 140px;
+			height: 40px;
+			font-size: 15px;
+			line-height: 40px;
+			text-align: center;
+			color: #fff;
+			border: 1px solid #ccc;
+			background: #77C558;
+		}
+		.nav_user > .user_login > a {
+			color: #fff;
+		}
+		.nav_user > .user_login > a:hover {
+			color: #FFFF00;
+		}
+		
+		/* ------------------------------------图片轮播栏--------------------------------- */
+		.banner {
+			text-align: center;
+			width: 100%;
+			height: 380px;
+			position: relative;
+			border-bottom: 3px solid #ddd;
+		}
+		.list1 {
+			width: 1920px;
+			height: 380px;
+			list-style: none;
+		}
+		.list1 .item1 {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			opacity: 0;
+			transition: all .5s; 
+		}
+		.item1:nth-child(1){
+			background-image: url(img/banner01.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.item1:nth-child(2){
+			background-image: url(img/banner02.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.item1:nth-child(3){
+			background-image: url(img/banner03.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.item1:nth-child(4){
+			background-image: url(img/banner04.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.item1.active {
+			opacity: 1;
+			z-index: 20;
+		}
+		/* 左右按钮 */
+		.btn {
+			position: absolute;
+			width: 43px;
+			height: 75px;
+			opacity: 0.3;
+			top: 50%;
+			margin-top: -38px;
+			left: 35%;
+			background: #000  no-repeat;
+			/* display: none; */
 			z-index: 20;
 		}
 
+		}
+		#goPre {
+			margin-left: -485px;
+			background-position: 10px -275px;
+		}
+		#goNext {
+			margin-left: 520px;
+			background-position: 10px -335px;
+		}
+		/* 四个点 */
+		.pointList {
+			position: absolute;
+			top: 100%;
+			margin-top: -40px;
+			left: 47%;
+			z-index: 50;
+		}
+		.point {
+			width: 17px;
+			height: 17px;
+			background-color: rgba(0,0,0,0.4);
+			border-radius: 100%;
+			float: left;
+			margin-right: 14px;
+			border-style: solid;
+			border-width: 2px;
+			border-color: rgba(255,255,255,0.6);
+			cursor: pointer;
+		}
+		.point.active {
+			background-color: #f60;
+		}
+	.main{
+		
+	}
+	.title{
+		
+		height:42px;
+		border-bottom: 2PX solid #ddd;
+		
+		margin-top: 22px;
+		
+	}
+	   .title span{
+		font-size: 18px;
+		 font-weight: lighter;
+		 float: left;
+		line-height: 40px;
+		padding-left:16px;
+		padding-right: 16px;
+		 border-bottom:2px solid #57BC4C;
+		
+	    }
+	   .title a{
+		   color: #999;
+		   font-size: 1.2em;
+		   padding-top:16px;
+		float: right;
+		}
+		.course>li{
+			margin:20px 30px 0 0;
+			 float: left;	 
+		}
+		.course>li:not(:last){
+			margin: 10px;
+			
+		}
+		.course  a:hover{
+			color: red;
+			
+		}
+		.course  .teacher{
+			font-size:10px;
+			color: #999;
+		}
+		.course  .rmb{
+			font-size: 17px;
+			font-weight: bold;
+			color:#f60;
+		}
+	</style>
+	</head>
 	</style>
 </head>
 <body>
@@ -216,7 +364,7 @@
 		<div class="container">
 			<!-- 左侧的功能列表 -->
 			<ul class="menu">
-				<li><a href="index.html">首页</a></li>
+				<li id="li1"><a href="index.html">首页</a></li>
 				<li><a href="course.html">全部课程</a></li>
 				<li><a href="course.html?tid=1">基础课程</a></li>
 				<li><a href="course.html?tid=2">核心课程</a></li>
@@ -225,21 +373,90 @@
 				<li><a href="school.html">校区</a></li>
 			</ul>
 			<!-- 右侧的登陆注册 -->
+			<div class="nav_user">
+				<div class="user_login">
+					<a href="#">登录</a> | <a href="#">注册</a>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 	
 	<!-- 照片轮播 -->
 	<!-- 图片列表 -->
-	<div class="picbar">
-		<img class="picb" src="img/banner01.jpg" >
-		<img class="picb" src="img/banner02.jpg" >
-		<img class="picb" src="img/banner03.jpg" >
-		<img class="picb" src="img/banner04.jpg" >
+	<div class="banner">
+		<ul class="list1">
+			<li class="item1 active"></li>
+			<li class="item1"></li>
+			<li class="item1"></li>
+			<li class="item1"></li>
+		</ul>
+		<!-- 小圆点 -->
+		<ul class="pointList">
+			<li class="point active" data-index = "0"></li>
+			<li class="point" data-index = "1"></li>
+			<li class="point" data-index = "2"></li>
+			<li class="point" data-index = "3"></li>
+		</ul> 
+		<!-- 左右按钮 -->
+		<button type="button" class="btn" id="goPre"></button>
+		<button type="button" class="btn" id="goNext"></button>
 	</div>
+		<!--主体部分-->
+	<div class="main">
+		<div class="container">
+			<div class="part1">
+				<div class="title">
+					<span>最新课程</span>
+					<a href="#">更多</a>
+				</div>
+				<ul class="course">
+					<li>
+						<a href="#">
+							<img src="img/course/01.jpg">
+						</a>
+						<p><a href="#" class="course-name">12-微信小程序开发</a></p>
+						<p class="teacher">讲师：程涛</p>
+						<p class="rmb">¥ 599.00</p>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/course/02.jpg">
+						</a>
+						<p><a href="#" class="course-name">11-Unity地形搭建</a></p>
+						<p class="teacher">讲师：张东</p>
+						<p class="rmb">¥ 600.00</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/course/03.jpg">
+						</a>
+						<p><a href="#" class="course-name">10-UI控件之基础控制</a></p>
+						<p class="teacher">讲师：李然</p>
+						<p class="rmb">¥ 450.00</p>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/course/04.jpg">
+						</a>
+						<p><a href="#" class="course-name">9-微信小程序高级</a></p>
+						<p class="teacher">讲师：成亮</p>
+						<p class="rmb">¥ 200.00</p>
+					/li>
+				</ul>
+
+			</div>
+			<div class="part2"></div>
+			<div class="part3"></div>
+		</div>
+	</div>
+
 	
 	
 
 	<script>
+		// 导航栏选中
+		li1.classList.add('current')
 		// 鼠标悬停“我的购物车”则小三角开始旋转；离开则转回来
 		// 鼠标悬停出现下拉菜单，离开隐藏
 		myCart.onmouseenter = ()=>{
@@ -252,14 +469,74 @@
 			caret.classList.remove('caret-rotate')
 			myCart1.classList.remove('shoppingc2')
 		}
-		let linav = document.querySelectorAll('.linav')
-		 console.log(linav)
-		for(let i=0; i<linav.length; i++){
-			let list1 = linav[i]
-			list1.onclick = ()=> {
-			list1.classList.add('linav1')
+
+		
+		
+		// 图片轮播
+		let items = document.getElementsByClassName("item1");
+		let goPreBtn = document.getElementById('goPre')			//上一张按钮
+		let goNextBtn = document.getElementById('goNext')		//下一张按钮
+		let points = document.getElementsByClassName('point')	//点
+		let time = 0;											//定时器跳转时间参数
+		let index = 0;	//index表示第几张图片在展示,第index有active类
+		let clearActive = function() {
+			for (let i=0; i<items.length; i++) {
+				items[i].className = "item1";
+			}
+			for (let i=0; i<points.length; i++) {
+				points[i].className = "point";
 			}
 		}
+		
+		let goIndex = function(){
+			clearActive();
+			console.log(index)
+			items[index].className = "item1 active";
+			points[index].className = "point active";
+		}
+		
+		let goNext = function(){
+			if(index < 3){
+				index ++;
+			}else{
+				index = 0;
+			}
+			goIndex();
+		}
+		
+		let goPre = function(){
+			if(index == 0){
+				index = 3;
+			}else{
+				index --;
+			}
+			goIndex();
+		}		
+		
+		goNextBtn.addEventListener('click',function(){
+			goNext();
+		})
+		goPreBtn.addEventListener('click',function(){
+			goPre();
+		})
+		
+		for(let i=0; i<points.length; i++) {
+			points[i].addEventListener('mouseover',function(){
+				let pointIndex = this.getAttribute('data-index');
+				index = pointIndex;
+				goIndex();
+				time = 0;
+			})
+		}
+		// 3秒跳转一次
+		setInterval(function(){
+			time++;
+			if(time == 30){
+				goNext();
+				time = 0;
+			}
+		},100)
+		
 		
 	</script>
 
